@@ -7,7 +7,7 @@
 // structure for message queue
 struct mesg_buffer {
 	long mesg_type;
-	char mesg_text[100];
+	char mesg_text[1024];
 } message;
 
 int main()
@@ -16,7 +16,7 @@ int main()
 	int msgid;
 
 	// ftok to generate unique key
-	key = ftok("progfile", 65);
+	key = ftok("meshstreamer", 65);
 
 	// msgget creates a message queue
 	// and returns identifier

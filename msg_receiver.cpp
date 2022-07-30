@@ -6,7 +6,7 @@
 // structure for message queue
 struct mesg_buffer {
 	long mesg_type;
-	char mesg_text[100];
+	char mesg_text[1024];
 } message;
 
 int main()
