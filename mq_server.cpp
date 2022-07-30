@@ -2,6 +2,8 @@
 #include <mqueue.h>
 #include <cassert>
 
+#define DFLT_MSGMAX 10 /* max number of messages in each queue */
+#define DFLT_MSGSIZEMAX 8192 /* max message size */
 
 int main() {
  
@@ -10,12 +12,14 @@ int main() {
  */
 
 /* Open the message queue for reading */
-mqd_t mqd = mq_open ("/OpenCSF_MQ", O_RDONLY);
-assert (mqd != -1);
+mqd_t mqd = mq_open ("/OpenCSF_MQ", O_CREAT| O_RDONLY);
+//assert (mqd != -1);
+
+printf("mqd: %d\n", mqd);
 
 /* Get the message queue attributes */
 struct mq_attr attr;
-assert (mq_getattr (mqd, &attr) != -1);
+//assert (mq_getattr (mqd, &attr) != -1);
 
 char *buffer = (char *) calloc (attr.mq_msgsize, 1);
 assert (buffer != NULL);

@@ -2,7 +2,7 @@
 #include <mqueue.h>
 
 int main() {
-   mqd_t mqd = mq_open ("/OpenCSF_MQ", O_WRONLY,  0600, NULL);
+   mqd_t mqd = mq_open ("/OpenCSF_MQQ", O_CREAT|O_WRONLY,  700, NULL);
   
   /* Ensure the creation was successful */
   if (mqd == -1)
